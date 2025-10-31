@@ -1,0 +1,1161 @@
+USE [AmpAdmin]
+GO
+/****** Object:  Table [dbo].[categoria_productos]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[categoria_productos](
+	[id] [int] NOT NULL,
+	[categoria] [varchar](50) NULL,
+ CONSTRAINT [PK_categoria_productos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[cliente]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[cliente](
+	[id_cliente] [int] IDENTITY(1,1) NOT NULL,
+	[razon_social] [varchar](50) NULL,
+	[idCondicionIVA] [int] NOT NULL,
+	[tipo_factura] [int] NULL,
+	[cuit] [varchar](50) NULL,
+	[domicilio] [varchar](50) NULL,
+	[localidad] [int] NULL,
+	[provincia] [int] NULL,
+	[cp] [varchar](50) NULL,
+	[telefono] [varchar](50) NULL,
+	[anulado] [bit] NOT NULL,
+	[dni] [varchar](50) NULL,
+	[tipo_documento] [int] NULL,
+	[email] [varchar](50) NULL,
+	[barrio] [varchar](50) NULL,
+	[fechaRegistro] [datetime] NOT NULL,
+ CONSTRAINT [PK_cliente] PRIMARY KEY CLUSTERED 
+(
+	[id_cliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[compra]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[compra](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[fecha] [nvarchar](50) NULL,
+	[id_proveedor] [int] NULL,
+	[location] [varchar](1000) NULL,
+	[factura] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[condicionIVA]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[condicionIVA](
+	[idCondicionIVA] [int] NOT NULL,
+	[descripcion] [nvarchar](30) NOT NULL,
+ CONSTRAINT [PK_condicionIVA] PRIMARY KEY CLUSTERED 
+(
+	[idCondicionIVA] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[departamento]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[departamento](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombreDepartamento] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[factura]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[factura](
+	[id_factura] [int] IDENTITY(1,1) NOT NULL,
+	[id_cliente] [varchar](50) NULL,
+	[tipo_documento] [varchar](50) NULL,
+	[fecha] [varchar](50) NULL,
+	[total] [decimal](18, 0) NULL,
+	[location] [varchar](1000) NULL,
+ CONSTRAINT [PK_factura] PRIMARY KEY CLUSTERED 
+(
+	[id_factura] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[localidad]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[localidad](
+	[id] [int] NULL,
+	[localidad] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[motivoBajaStock]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[motivoBajaStock](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[barcodebaja] [int] NULL,
+	[cantidadbaja] [int] NULL,
+	[motivo] [varchar](50) NULL,
+	[operador] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[numero_factura]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[numero_factura](
+	[id_numero] [int] NULL,
+	[numero] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ordendecompra]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ordendecompra](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[fecha] [varchar](50) NULL,
+	[id_proveedor] [int] NULL,
+	[location] [varchar](1000) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[producto]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[producto](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[categoria] [int] NULL,
+	[barcode] [int] NULL,
+	[detalle] [varchar](50) NULL,
+	[stock] [int] NULL,
+	[precio] [decimal](18, 2) NULL,
+	[fecha_alta] [datetime] NULL,
+ CONSTRAINT [PK_producto] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[proveedor]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[proveedor](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[razon_social] [varchar](50) NULL,
+	[cuit] [bigint] NULL,
+	[direccion] [varchar](50) NULL,
+	[idLocalidad] [int] NULL,
+	[tel] [bigint] NULL,
+	[correo] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[proveedorpago]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[proveedorpago](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id_proveedor] [int] NULL,
+	[fecha] [varchar](50) NULL,
+	[numero_factura] [varchar](50) NULL,
+	[monto] [float] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[provincia]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[provincia](
+	[id] [int] NULL,
+	[provincia] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[reclamoproveedor]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[reclamoproveedor](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[fecha] [varchar](50) NULL,
+	[id_proveedor] [int] NULL,
+	[location] [varchar](1000) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tipo_documento]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tipo_documento](
+	[id] [int] NULL,
+	[descripcion] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tipo_factura]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tipo_factura](
+	[id] [int] NULL,
+	[descripcion] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[usuarios]    Script Date: 31/10/2025 20:17:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[usuarios](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario] [varchar](50) NULL,
+	[pass] [varchar](50) NULL,
+	[nombre] [varchar](50) NULL,
+	[apellido] [varchar](50) NULL,
+	[dni] [int] NULL,
+	[idDepartamento] [int] NULL
+) ON [PRIMARY]
+GO
+INSERT [dbo].[categoria_productos] ([id], [categoria]) VALUES (1, N'Materiales Eléctricos')
+GO
+INSERT [dbo].[categoria_productos] ([id], [categoria]) VALUES (2, N'Herramientas')
+GO
+INSERT [dbo].[categoria_productos] ([id], [categoria]) VALUES (3, N'Iluminación')
+GO
+SET IDENTITY_INSERT [dbo].[cliente] ON 
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (1, N'Facundo', 1, 1, N'2041', N'Bolivar 325', 1, 1, N'2113', N'3416082000', 1, N'41637946', 1, N'sadadasd', N'-', CAST(N'2025-09-29T19:04:16.633' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (2, N'Facundo Paron', 1, 1, N'15641564561', N'Bolivar 325', 1, 1, N'2113', N'3416082000', 0, N'41637946', 1, N'asdadsadsad', N'-', CAST(N'2025-09-29T19:04:16.730' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (3, N'vvvv', 2, 2, N'274553310', N'djdkdk', 3, 1, N'2323', N'45664646', 1, N'455555', 1, N'45664646', N'peru', CAST(N'2025-09-29T19:04:16.737' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (4, N'Luis Eze', 1, 1, N'20319507289', N'Salta 33', 2, 1, N'2113', N'3416082000', 1, N'31950728', 1, N'3416082000', NULL, CAST(N'2025-09-29T19:04:16.740' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (5, N'Eze Suarez', 2, 1, N'20447742455', N'Sol de julio', 3, 1, N'5255', N'3856458018', 0, N'44774245', 1, N'3856458018', N'peligroso', CAST(N'2025-09-29T19:04:16.747' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (6, N'Ordoñez Luis Carlos', 2, 1, N'20-42338127-3', N'San francisco del chañar', 2, 1, N'5209', N'3522459570', 0, N'42338127', 1, N'3522459570', N'Deportivo', CAST(N'2025-09-29T19:04:16.750' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (7, N'Paron, Terry', 2, 2, N'20-41637943-3', N'Bolivar 325', 2, 1, N'2112', N'34160820002', 0, N'41637943', 1, N'34160820002', NULL, CAST(N'2025-09-29T19:04:16.753' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (8, N'Juan Perez', 1, 1, N'20-12345678-1', N'Av. Libertad 123', 1, 1, N'2000', N'3411234567', 0, N'12345678', 1, N'juan.perez1@example.com', N'Centro', CAST(N'2025-03-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (9, N'Maria Lopez', 2, 2, N'27-87654321-0', N'Calle Falsa 456', 2, 1, N'2001', N'3412345678', 0, N'87654321', 1, N'maria.lopez2@example.com', N'Norte', CAST(N'2025-04-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (10, N'Carlos Gonzalez', 1, 1, N'20-23456789-2', N'Av. Mitre 789', 1, 1, N'2002', N'3413456789', 1, N'23456789', 1, N'carlos.gonzalez3@example.com', N'Sur', CAST(N'2025-01-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (11, N'Laura Rodriguez', 2, 2, N'27-34567890-9', N'Calle Las Flores 12', 3, 1, N'2003', N'3414567890', 0, N'34567890', 1, N'laura.rodriguez4@example.com', N'Este', CAST(N'2025-02-15T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (12, N'Pedro Sanchez', 1, 1, N'20-45678901-3', N'Av. San Martin 34', 2, 1, N'2004', N'3415678901', 0, N'45678901', 1, N'pedro.sanchez5@example.com', N'Centro', CAST(N'2025-03-30T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (13, N'Ana Diaz', 2, 2, N'27-56789012-8', N'Calle Rivadavia 56', 3, 1, N'2005', N'3416789012', 1, N'56789012', 1, N'ana.diaz6@example.com', N'Norte', CAST(N'2025-01-25T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (14, N'Jorge Herrera', 1, 1, N'20-67890123-4', N'Av. Colon 78', 1, 1, N'2006', N'3417890123', 0, N'67890123', 1, N'jorge.herrera7@example.com', N'Sur', CAST(N'2025-04-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (15, N'Paula Romero', 2, 2, N'27-78901234-7', N'Calle Belgrano 90', 2, 1, N'2007', N'3418901234', 0, N'78901234', 1, N'paula.romero8@example.com', N'Este', CAST(N'2025-02-28T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (16, N'Ricardo Morales', 1, 1, N'20-89012345-5', N'Av. Córdoba 101', 3, 1, N'2008', N'3419012345', 1, N'89012345', 1, N'ricardo.morales9@example.com', N'Centro', CAST(N'2025-03-18T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (17, N'Fernanda Castro', 2, 2, N'27-90123456-6', N'Calle Pellegrini 202', 1, 1, N'2009', N'3410123456', 0, N'90123456', 1, N'fernanda.castro10@example.com', N'Norte', CAST(N'2025-01-10T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (18, N'Martin Alvarez', 1, 1, N'20-01234567-0', N'Av. Independencia 303', 2, 1, N'2010', N'3411234501', 0, N'01234567', 1, N'martin.alvarez11@example.com', N'Sur', CAST(N'2025-02-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (19, N'Sofia Medina', 2, 2, N'27-11223344-1', N'Calle San Juan 404', 3, 1, N'2011', N'3412345602', 1, N'11223344', 1, N'sofia.medina12@example.com', N'Este', CAST(N'2025-03-25T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (20, N'Lucas Fernandez', 1, 1, N'20-22334455-2', N'Av. Belgrano 505', 1, 1, N'2012', N'3413456703', 0, N'22334455', 1, N'lucas.fernandez13@example.com', N'Centro', CAST(N'2025-04-15T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (21, N'Camila Rojas', 2, 2, N'27-33445566-3', N'Calle Moreno 606', 2, 1, N'2013', N'3414567804', 0, N'33445566', 1, N'camila.rojas14@example.com', N'Norte', CAST(N'2025-01-18T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (22, N'Diego Ortiz', 1, 1, N'20-44556677-4', N'Av. Urquiza 707', 3, 1, N'2014', N'3415678905', 1, N'44556677', 1, N'diego.ortiz15@example.com', N'Sur', CAST(N'2025-02-22T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (23, N'Valentina Vega', 2, 2, N'27-55667788-5', N'Calle Sarmiento 808', 1, 1, N'2015', N'3416789016', 0, N'55667788', 1, N'valentina.vega16@example.com', N'Este', CAST(N'2025-03-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (24, N'Agustin Torres', 1, 1, N'20-66778899-6', N'Av. San Lorenzo 909', 2, 1, N'2016', N'3417890127', 0, N'66778899', 1, N'agustin.torres17@example.com', N'Centro', CAST(N'2025-04-08T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (25, N'Julieta Chavez', 2, 2, N'27-77889900-7', N'Calle España 111', 3, 1, N'2017', N'3418901238', 1, N'77889900', 1, N'julieta.chavez18@example.com', N'Norte', CAST(N'2025-01-30T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (26, N'Nicolas Gutierrez', 1, 1, N'20-88990011-8', N'Av. Alsina 222', 1, 1, N'2018', N'3419012349', 0, N'88990011', 1, N'nicolas.gutierrez19@example.com', N'Sur', CAST(N'2025-02-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (27, N'Agustina Suarez', 2, 2, N'27-99001122-9', N'Calle Moreno 333', 2, 1, N'2019', N'3410123450', 0, N'99001122', 1, N'agustina.suarez20@example.com', N'Este', CAST(N'2025-03-28T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (28, N'Federico Molina', 1, 1, N'20-10101010-1', N'Av. Alem 444', 3, 1, N'2020', N'3411234561', 1, N'10101010', 1, N'federico.molina21@example.com', N'Centro', CAST(N'2025-01-15T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (29, N'Carla Navarro', 2, 2, N'27-12121212-2', N'Calle Brown 555', 1, 1, N'2021', N'3412345672', 0, N'12121212', 1, N'carla.navarro22@example.com', N'Norte', CAST(N'2025-02-08T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (30, N'Emiliano Rivas', 1, 1, N'20-13131313-3', N'Av. España 666', 2, 1, N'2022', N'3413456783', 0, N'13131313', 1, N'emiliano.rivas23@example.com', N'Sur', CAST(N'2025-03-10T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (31, N'Vanesa Aguirre', 2, 2, N'27-14141414-4', N'Calle Córdoba 777', 3, 1, N'2023', N'3414567894', 1, N'14141414', 1, N'vanesa.aguirre24@example.com', N'Este', CAST(N'2025-04-02T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (32, N'Gustavo Cabrera', 1, 1, N'20-15151515-5', N'Av. San Juan 888', 1, 1, N'2024', N'3415678905', 0, N'15151515', 1, N'gustavo.cabrera25@example.com', N'Centro', CAST(N'2025-01-28T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (33, N'Monica Paredes', 2, 2, N'27-16161616-6', N'Calle Rivadavia 999', 2, 1, N'2025', N'3416789016', 1, N'16161616', 1, N'monica.paredes26@example.com', N'Norte', CAST(N'2025-02-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (34, N'Andres Bravo', 1, 1, N'20-17171717-7', N'Av. Libertad 1010', 3, 1, N'2026', N'3417890127', 0, N'17171717', 1, N'andres.bravo27@example.com', N'Sur', CAST(N'2025-03-22T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (35, N'Veronica Flores', 2, 2, N'27-18181818-8', N'Calle Pellegrini 1111', 1, 1, N'2027', N'3418901238', 0, N'18181818', 1, N'veronica.flores28@example.com', N'Este', CAST(N'2025-04-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (36, N'Diego Ramirez', 1, 1, N'20-19191919-9', N'Av. Mitre 1212', 2, 1, N'2028', N'3419012349', 1, N'19191919', 1, N'diego.ramirez29@example.com', N'Centro', CAST(N'2025-01-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (37, N'Paola Jimenez', 2, 2, N'27-20202020-0', N'Calle Las Heras 1313', 3, 1, N'2029', N'3410123450', 0, N'20202020', 1, N'paola.jimenez30@example.com', N'Norte', CAST(N'2025-02-25T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (38, N'Peron, Rodolfo', 1, 1, N'20-2021950722-3', N'Santa Fe 58', 2, 1, N'2115', N'3416082005', 0, N'2021950722', 1, N'3416082005', N'Pichincha', CAST(N'2025-09-29T19:17:25.750' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (39, N'Juan Perez', 1, 1, N'20-12345678-1', N'Calle Falsa 123', 1, 1, N'3000', N'3416000001', 0, N'12345678', 1, N'juan.perez@email.com', N'Centro', CAST(N'2023-01-15T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (40, N'Maria Lopez', 1, 1, N'20-87654321-2', N'Av Libertad 45', 2, 1, N'3001', N'3416000002', 0, N'87654321', 1, N'maria.lopez@email.com', N'Norte', CAST(N'2023-02-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (41, N'Carlos Gonzalez', 2, 2, N'20-11223344-3', N'Calle 9 789', 3, 1, N'3002', N'3416000003', 0, N'11223344', 1, N'carlos.gonzalez@email.com', N'Sur', CAST(N'2023-03-10T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (42, N'Laura Rodriguez', 1, 1, N'20-22334455-4', N'Calle 10 456', 1, 1, N'3003', N'3416000004', 0, N'22334455', 1, N'laura.rodriguez@email.com', N'Centro', CAST(N'2023-04-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (43, N'Pedro Sanchez', 2, 2, N'20-33445566-5', N'Av Siempre Viva 12', 2, 1, N'3004', N'3416000005', 0, N'33445566', 1, N'pedro.sanchez@email.com', N'Este', CAST(N'2023-05-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (44, N'Ana Martinez', 1, 1, N'20-44556677-6', N'Calle 7 234', 3, 1, N'3005', N'3416000006', 0, N'44556677', 1, N'ana.martinez@email.com', N'Oeste', CAST(N'2023-06-18T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (45, N'Luis Torres', 2, 2, N'20-55667788-7', N'Av Córdoba 100', 1, 1, N'3006', N'3416000007', 0, N'55667788', 1, N'luis.torres@email.com', N'Centro', CAST(N'2023-07-22T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (46, N'Sofia Herrera', 1, 1, N'20-66778899-8', N'Calle Mitre 50', 2, 1, N'3007', N'3416000008', 0, N'66778899', 1, N'sofia.herrera@email.com', N'Norte', CAST(N'2023-08-08T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (47, N'Diego Ramirez', 2, 2, N'20-77889900-9', N'Av Rivadavia 300', 3, 1, N'3008', N'3416000009', 0, N'77889900', 1, N'diego.ramirez@email.com', N'Sur', CAST(N'2023-09-14T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (48, N'Carolina Vega', 1, 1, N'20-88990011-0', N'Calle San Martin 20', 1, 1, N'3009', N'3416000010', 0, N'88990011', 1, N'carolina.vega@email.com', N'Centro', CAST(N'2023-10-30T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (49, N'Fernando Diaz', 2, 2, N'20-99001122-1', N'Av Belgrano 150', 2, 1, N'3010', N'3416000011', 0, N'99001122', 1, N'fernando.diaz@email.com', N'Este', CAST(N'2023-11-25T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (50, N'Gabriela Alvarez', 1, 1, N'20-10111213-2', N'Calle Moreno 88', 3, 1, N'3011', N'3416000012', 0, N'10111213', 1, N'gabriela.alvarez@email.com', N'Oeste', CAST(N'2023-12-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (51, N'Martin Gutierrez', 2, 1, N'20-11121314-3', N'Calle 5 77', 1, 1, N'3012', N'3416000013', 0, N'11121314', 1, N'martin.gutierrez@email.com', N'Centro', CAST(N'2024-01-18T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (52, N'Valeria Diaz', 1, 2, N'20-12131415-4', N'Av Belgrano 200', 2, 1, N'3013', N'3416000014', 0, N'12131415', 1, N'valeria.diaz@email.com', N'Norte', CAST(N'2024-02-22T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (53, N'Sebastian Mora', 2, 1, N'20-13141516-5', N'Calle San Juan 33', 3, 1, N'3014', N'3416000015', 0, N'13141516', 1, N'sebastian.mora@email.com', N'Sur', CAST(N'2024-03-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (54, N'Natalia Rios', 1, 2, N'20-14151617-6', N'Av Libertad 77', 1, 1, N'3015', N'3416000016', 0, N'14151617', 1, N'natalia.rios@email.com', N'Centro', CAST(N'2024-04-09T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (55, N'Javier Alvarez', 2, 1, N'20-15161718-7', N'Calle Mitre 101', 2, 1, N'3016', N'3416000017', 0, N'15161718', 1, N'javier.alvarez@email.com', N'Norte', CAST(N'2024-05-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (56, N'Paula Romero', 1, 2, N'20-16171819-8', N'Av Córdoba 150', 3, 1, N'3017', N'3416000018', 0, N'16171819', 1, N'paula.romero@email.com', N'Este', CAST(N'2024-06-15T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (57, N'Ricardo Flores', 2, 1, N'20-17181920-9', N'Calle San Martin 12', 1, 1, N'3018', N'3416000019', 0, N'17181920', 1, N'ricardo.flores@email.com', N'Oeste', CAST(N'2024-07-18T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (58, N'Camila Torres', 1, 2, N'20-18192021-0', N'Av Rivadavia 55', 2, 1, N'3019', N'3416000020', 0, N'18192021', 1, N'camila.torres@email.com', N'Centro', CAST(N'2024-08-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (59, N'Andres Pacheco', 2, 1, N'20-19202122-1', N'Calle 8 34', 3, 1, N'3020', N'3416000021', 0, N'19202122', 1, N'andres.pacheco@email.com', N'Sur', CAST(N'2023-11-08T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (60, N'Liliana Torres', 1, 2, N'20-20212223-2', N'Av Santa Fe 100', 1, 1, N'3021', N'3416000022', 0, N'20212223', 1, N'liliana.torres@email.com', N'Norte', CAST(N'2023-12-15T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (61, N'Diego Fernandez', 2, 1, N'20-21222324-3', N'Calle 3 56', 2, 1, N'3022', N'3416000023', 0, N'21222324', 1, N'diego.fernandez@email.com', N'Centro', CAST(N'2024-01-10T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (62, N'Monica Suarez', 1, 2, N'20-22232425-4', N'Av Independencia 77', 3, 1, N'3023', N'3416000024', 0, N'22232425', 1, N'monica.suarez@email.com', N'Este', CAST(N'2024-02-18T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (63, N'Gustavo Medina', 2, 1, N'20-23242526-5', N'Calle 6 89', 1, 1, N'3024', N'3416000025', 0, N'23242526', 1, N'gustavo.medina@email.com', N'Oeste', CAST(N'2024-03-22T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (64, N'Veronica Aguilar', 1, 2, N'20-24252627-6', N'Av Colon 150', 2, 1, N'3025', N'3416000026', 0, N'24252627', 1, N'veronica.aguilar@email.com', N'Centro', CAST(N'2024-04-12T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (65, N'Santiago Molina', 2, 1, N'20-25262728-7', N'Calle 11 200', 3, 1, N'3026', N'3416000027', 0, N'25262728', 1, N'santiago.molina@email.com', N'Norte', CAST(N'2024-05-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (66, N'Florencia Castillo', 1, 2, N'20-26272829-8', N'Av Santa Rosa 45', 1, 1, N'3027', N'3416000028', 0, N'26272829', 1, N'florencia.castillo@email.com', N'Este', CAST(N'2024-06-20T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (67, N'Hernan Alvarez', 2, 1, N'20-27282930-9', N'Calle 14 88', 2, 1, N'3028', N'3416000029', 0, N'27282930', 1, N'hernan.alvarez@email.com', N'Oeste', CAST(N'2024-07-15T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (68, N'Daniela Herrera', 1, 2, N'20-28293031-0', N'Av Roca 77', 3, 1, N'3029', N'3416000030', 0, N'28293031', 1, N'daniela.herrera@email.com', N'Centro', CAST(N'2024-08-08T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (69, N'Marcos Rojas', 2, 1, N'20-29303132-1', N'Calle 9 33', 1, 1, N'3030', N'3416000031', 0, N'29303132', 1, N'marcos.rojas@email.com', N'Norte', CAST(N'2024-09-11T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (70, N'Camila Paredes', 1, 2, N'20-30313233-2', N'Av Belgrano 200', 2, 1, N'3031', N'3416000032', 0, N'30313233', 1, N'camila.paredes@email.com', N'Sur', CAST(N'2024-10-19T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (71, N'Facundo Paron', 2, 1, N'20-31323334-3', N'Calle Bolivar 325', 3, 1, N'3032', N'3416000033', 0, N'31323334', 1, N'facundo.paron@email.com', N'Centro', CAST(N'2024-11-05T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[cliente] ([id_cliente], [razon_social], [idCondicionIVA], [tipo_factura], [cuit], [domicilio], [localidad], [provincia], [cp], [telefono], [anulado], [dni], [tipo_documento], [email], [barrio], [fechaRegistro]) VALUES (72, N'Julieta Mendoza', 1, 2, N'20-32333435-4', N'Av Pellegrini 100', 1, 1, N'3033', N'3416000034', 0, N'32333435', 1, N'julieta.mendoza@email.com', N'Norte', CAST(N'2024-12-21T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[cliente] OFF
+GO
+INSERT [dbo].[condicionIVA] ([idCondicionIVA], [descripcion]) VALUES (1, N'Consumidor Final')
+GO
+INSERT [dbo].[condicionIVA] ([idCondicionIVA], [descripcion]) VALUES (2, N'Responsable Inscripto')
+GO
+INSERT [dbo].[condicionIVA] ([idCondicionIVA], [descripcion]) VALUES (3, N'Monotributista')
+GO
+INSERT [dbo].[condicionIVA] ([idCondicionIVA], [descripcion]) VALUES (4, N'Exento')
+GO
+INSERT [dbo].[condicionIVA] ([idCondicionIVA], [descripcion]) VALUES (5, N'No Responsable')
+GO
+SET IDENTITY_INSERT [dbo].[departamento] ON 
+GO
+INSERT [dbo].[departamento] ([id], [nombreDepartamento]) VALUES (1, N'Recursos Humanos')
+GO
+INSERT [dbo].[departamento] ([id], [nombreDepartamento]) VALUES (2, N'Ventas')
+GO
+INSERT [dbo].[departamento] ([id], [nombreDepartamento]) VALUES (3, N'Marketing')
+GO
+INSERT [dbo].[departamento] ([id], [nombreDepartamento]) VALUES (4, N'Finanzas')
+GO
+INSERT [dbo].[departamento] ([id], [nombreDepartamento]) VALUES (5, N'Tecnología de la Información (TI)')
+GO
+INSERT [dbo].[departamento] ([id], [nombreDepartamento]) VALUES (6, N'Producción')
+GO
+INSERT [dbo].[departamento] ([id], [nombreDepartamento]) VALUES (7, N'Logística')
+GO
+INSERT [dbo].[departamento] ([id], [nombreDepartamento]) VALUES (8, N'Atención al Cliente')
+GO
+SET IDENTITY_INSERT [dbo].[departamento] OFF
+GO
+SET IDENTITY_INSERT [dbo].[factura] ON 
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (1, N'38', N'1', N'Oct 18 2025  4:35PM', CAST(96000 AS Decimal(18, 0)), N'20251018_163532.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (2, N'37', N'2', N'Oct 18 2025  4:47PM', CAST(340000 AS Decimal(18, 0)), N'20251018_164733.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (3, N'44', N'1', N'Oct 18 2025  4:52PM', CAST(18420 AS Decimal(18, 0)), N'20251018_165255.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (4, N'27', N'2', N'Oct 18 2025  5:04PM', CAST(0 AS Decimal(18, 0)), N'20251018_170446.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (5, N'5', N'1', N'Oct 18 2025  5:07PM', CAST(312000 AS Decimal(18, 0)), N'20251018_170743.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (6, N'29', N'2', N'Oct 18 2025  5:11PM', CAST(56100 AS Decimal(18, 0)), N'20251018_171102.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (7, N'8', N'1', N'Oct 18 2025  5:12PM', CAST(1638000 AS Decimal(18, 0)), N'20251018_171220.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (8, N'7', N'2', N'Oct 18 2025  5:26PM', CAST(312000 AS Decimal(18, 0)), N'20251018_172654.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (9, N'2', N'1', N'Oct 18 2025  7:14PM', CAST(6500 AS Decimal(18, 0)), N'20251018_191415.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (10, N'7', N'2', N'Oct 18 2025  7:17PM', CAST(234000 AS Decimal(18, 0)), N'20251018_191728.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (11, N'5', N'1', N'Oct 18 2025  7:19PM', CAST(295200 AS Decimal(18, 0)), N'20251018_191941.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (12, N'5', N'5', N'Oct 18 2025  7:39PM', CAST(46800 AS Decimal(18, 0)), N'20251018_193911.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (13, N'40', N'5', N'Oct 19 2025  3:26PM', CAST(70000 AS Decimal(18, 0)), N'20251019_152610.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (14, N'60', N'5', N'Oct 19 2025  3:33PM', CAST(42500 AS Decimal(18, 0)), N'20251019_153303.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (15, N'5', N'5', N'Oct 20 2025  8:46PM', CAST(49000 AS Decimal(18, 0)), N'20251020_204627.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (16, N'5', N'1', N'Oct 20 2025  8:59PM', CAST(19000 AS Decimal(18, 0)), N'20251020_205953.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (17, N'11', N'2', N'Oct 20 2025  9:01PM', CAST(70000 AS Decimal(18, 0)), N'20251020_210143.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (18, N'43', N'5', N'Oct 20 2025  9:08PM', CAST(12000 AS Decimal(18, 0)), N'20251020_210804.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (19, N'7', N'2', N'Oct 20 2025  9:13PM', CAST(7800 AS Decimal(18, 0)), N'20251020_211352.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (20, N'9', N'2', N'Oct 20 2025  9:14PM', CAST(6100 AS Decimal(18, 0)), N'20251020_211429.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (21, N'6', N'1', N'Oct 20 2025  9:16PM', CAST(3500 AS Decimal(18, 0)), N'20251020_211611.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (22, N'11', N'2', N'Oct 20 2025  9:55PM', CAST(381300 AS Decimal(18, 0)), N'20251020_215515.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (23, N'9', N'2', N'Oct 20 2025 10:01PM', CAST(1480800 AS Decimal(18, 0)), N'20251020_220111.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (24, N'7', N'2', N'Oct 20 2025 10:03PM', CAST(3500 AS Decimal(18, 0)), N'20251020_220338.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (25, N'9', N'2', N'Oct 20 2025 10:09PM', CAST(7800 AS Decimal(18, 0)), N'20251020_220942.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (26, N'9', N'2', N'Oct 20 2025 10:10PM', CAST(921 AS Decimal(18, 0)), N'20251020_221054.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (27, N'7', N'2', N'Oct 21 2025  8:43PM', CAST(1200 AS Decimal(18, 0)), N'20251021_204352.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (28, N'2', N'1', N'Oct 21 2025 10:55PM', CAST(2300 AS Decimal(18, 0)), N'20251021_225514.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (29, N'2', N'5', N'Oct 21 2025 10:56PM', CAST(2300 AS Decimal(18, 0)), N'20251021_225637.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (30, N'26', N'1', N'Oct 21 2025 11:00PM', CAST(6300 AS Decimal(18, 0)), N'20251021_230050.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (31, N'26', N'5', N'Oct 21 2025 11:02PM', CAST(3150 AS Decimal(18, 0)), N'20251021_230238.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (32, N'11', N'2', N'Oct 21 2025 11:36PM', CAST(6300 AS Decimal(18, 0)), N'20251021_233645.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (33, N'8', N'1', N'Oct 21 2025 11:39PM', CAST(6300 AS Decimal(18, 0)), N'20251021_233954.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (34, N'8', N'5', N'Oct 21 2025 11:41PM', CAST(3150 AS Decimal(18, 0)), N'20251021_234104.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (35, N'39', N'1', N'Oct 21 2025 11:52PM', CAST(6300 AS Decimal(18, 0)), N'20251021_235209.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (36, N'8', N'5', N'Oct 21 2025 11:53PM', CAST(3150 AS Decimal(18, 0)), N'20251021_235338.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (37, N'2', N'1', N'Oct 22 2025 10:24PM', CAST(850 AS Decimal(18, 0)), N'20251022_222409.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (38, N'40', N'1', N'Oct 22 2025 10:39PM', CAST(448500 AS Decimal(18, 0)), N'20251022_223950.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (39, N'2', N'1', N'Oct 22 2025 10:46PM', CAST(14000 AS Decimal(18, 0)), N'20251022_224656.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (40, N'2', N'1', N'Oct 22 2025 10:57PM', CAST(7000 AS Decimal(18, 0)), N'20251022_225742.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (41, N'5', N'1', N'Oct 22 2025 10:58PM', CAST(39000 AS Decimal(18, 0)), N'20251022_225812.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (42, N'9', N'2', N'Oct 22 2025 11:03PM', CAST(15600 AS Decimal(18, 0)), N'20251022_230339.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (43, N'9', N'2', N'Oct 22 2025 11:03PM', CAST(15600 AS Decimal(18, 0)), N'20251022_230353.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (44, N'34', N'1', N'Oct 22 2025 11:04PM', CAST(15600 AS Decimal(18, 0)), N'20251022_230436.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (45, N'7', N'2', N'Oct 22 2025 11:06PM', CAST(15600 AS Decimal(18, 0)), N'20251022_230634.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (46, N'11', N'2', N'Oct 22 2025 11:10PM', CAST(78000 AS Decimal(18, 0)), N'20251022_231038.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (47, N'7', N'2', N'Oct 22 2025 11:11PM', CAST(1842 AS Decimal(18, 0)), N'20251022_231136.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (48, N'7', N'2', N'Oct 22 2025 11:12PM', CAST(1842 AS Decimal(18, 0)), N'20251022_231202.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (49, N'70', N'2', N'Oct 22 2025 11:58PM', CAST(6300 AS Decimal(18, 0)), N'20251022_235827.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (50, N'70', N'2', N'Oct 22 2025 11:59PM', CAST(17300 AS Decimal(18, 0)), N'20251022_235902.pdf')
+GO
+INSERT [dbo].[factura] ([id_factura], [id_cliente], [tipo_documento], [fecha], [total], [location]) VALUES (51, N'70', N'5', N'Oct 22 2025 11:59PM', CAST(3150 AS Decimal(18, 0)), N'20251022_235953.pdf')
+GO
+SET IDENTITY_INSERT [dbo].[factura] OFF
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (1, N'Córdoba')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (2, N'Villa María')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (3, N'Río Cuarto')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (4, N'Carlos Paz')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (5, N'San Francisco')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (6, N'Alta Gracia')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (7, N'Jesús María')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (8, N'Villa Dolores')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (9, N'La Falda')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (10, N'Cosquín')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (11, N'Rosario')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (12, N'Santa Fe')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (13, N'Mendoza')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (14, N'San Miguel de Tucumán')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (15, N'Salta')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (16, N'La Plata')
+GO
+INSERT [dbo].[localidad] ([id], [localidad]) VALUES (17, N'CABA')
+GO
+SET IDENTITY_INSERT [dbo].[producto] ON 
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (4, 1, 1001, N'Cable unipolar 2.5mm (Rojo) x 100m', 50, CAST(15000.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (5, 1, 1002, N'Interruptor tecla simple - Línea Jeluz', 200, CAST(850.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (6, 1, 1003, N'Tomacorriente doble 10A - Línea Sica', 180, CAST(921.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (7, 1, 1004, N'Interruptor Termomagnético 2x25A', 60, CAST(7800.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (8, 1, 1005, N'Disyuntor Diferencial 2x40A 30mA', 30, CAST(19500.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (9, 2, 2001, N'Pinza universal 7" aislada', 30, CAST(3500.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (10, 2, 2002, N'Destornillador Phillips mediano aislado', 45, CAST(1200.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (11, 2, 2003, N'Buscapolo digital', 70, CAST(950.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (12, 2, 2004, N'Pelacables automático', 25, CAST(6100.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (13, 3, 3001, N'Lámpara LED Bulbo 9W Luz Fría E27', 300, CAST(650.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (14, 3, 3002, N'Lámpara LED Bulbo 12W Luz Cálida E27', 250, CAST(780.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (15, 3, 3003, N'Plafón LED Cuadrado 18W Luz Neutra', 40, CAST(4200.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (16, 3, 3004, N'Reflector LED 50W para exterior', 15, CAST(9800.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:09:02.663' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (17, 1, 1001, N'Cable unipolar 2.5mm (Rojo) x 100m', 50, CAST(15000.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (18, 1, 1002, N'Interruptor tecla simple - Línea Jeluz', 200, CAST(850.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (19, 1, 1003, N'Tomacorriente doble 10A - Línea Sica', 180, CAST(921.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (20, 1, 1004, N'Interruptor Termomagnético 2x25A', 60, CAST(7800.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (21, 1, 1005, N'Disyuntor Diferencial 2x40A 30mA', 30, CAST(19500.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (22, 1, 1006, N'Caja octogonal para embutir (PVC)', 150, CAST(290.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (23, 1, 1007, N'Cinta aisladora PVC x 20m (Negra)', 400, CAST(450.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (24, 1, 1008, N'Cable unipolar 4mm (Verde/Amarillo) x 50m', 30, CAST(11000.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (25, 1, 1009, N'Jabalina 1/2" x 1m con tomacable', 20, CAST(3900.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (26, 1, 1010, N'Bastidor 3 módulos - Línea Sica', 300, CAST(210.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (27, 1, 1011, N'Módulo ciego - Línea Sica', 500, CAST(90.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (28, 1, 1012, N'Caño corrugado 7/8" (Naranja) x 25m', 70, CAST(6200.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (29, 2, 2001, N'Pinza universal 7" aislada', 30, CAST(3500.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (30, 2, 2002, N'Destornillador Phillips mediano aislado', 45, CAST(1200.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (31, 2, 2003, N'Buscapolo digital', 70, CAST(950.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (32, 2, 2004, N'Pelacables automático', 25, CAST(6100.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (33, 2, 2005, N'Tester multímetro digital básico', 15, CAST(8500.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (34, 2, 2006, N'Alicate de corte oblicuo 6" aislado', 25, CAST(3100.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (35, 2, 2007, N'Juego destornilladores perilleros x6', 20, CAST(4300.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (36, 2, 2008, N'Cinta métrica 5m (Metálica)', 18, CAST(2800.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (37, 2, 2009, N'Nivel de burbuja 20cm', 30, CAST(2200.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (38, 2, 2010, N'Taladro percutor 13mm 550W', 10, CAST(21000.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (39, 3, 3001, N'Lámpara LED Bulbo 9W Luz Fría E27', 300, CAST(650.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (40, 3, 3002, N'Lámpara LED Bulbo 12W Luz Cálida E27', 250, CAST(780.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (41, 3, 3003, N'Plafón LED Cuadrado 18W Luz Neutra', 40, CAST(4200.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (42, 3, 3004, N'Reflector LED 50W para exterior (IP65)', 15, CAST(9800.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (43, 3, 3005, N'Tubo LED 18W Luz Día 120cm (Sica)', 60, CAST(2900.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (44, 3, 3006, N'Spot dicroica LED 7W GU10 Cálida', 120, CAST(1100.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (45, 3, 3007, N'Fotocélula 10A para exterior', 35, CAST(2300.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (46, 3, 3008, N'Tira LED 5m 5050 Blanco Frío (Interior)', 25, CAST(7500.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (47, 3, 3009, N'Fuente 12V 5A para Tira LED', 25, CAST(5500.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+INSERT [dbo].[producto] ([id], [categoria], [barcode], [detalle], [stock], [precio], [fecha_alta]) VALUES (48, 3, 3010, N'Plafón LED redondo 12W Embutir (Frío)', 20, CAST(3150.00 AS Decimal(18, 2)), CAST(N'2025-10-18T16:11:11.310' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[producto] OFF
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (1, N'Buenos Aires')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (2, N'Ciudad Autónoma de Buenos Aires')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (3, N'Catamarca')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (4, N'Chaco')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (5, N'Chubut')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (6, N'Córdoba')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (7, N'Corrientes')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (8, N'Entre Ríos')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (9, N'Formosa')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (10, N'Jujuy')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (11, N'La Pampa')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (12, N'La Rioja')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (13, N'Mendoza')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (14, N'Misiones')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (15, N'Neuquén')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (16, N'Río Negro')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (17, N'Salta')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (18, N'San Juan')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (19, N'San Luis')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (20, N'Santa Cruz')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (21, N'Santa Fe')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (22, N'Santiago del Estero')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (23, N'Tierra del Fuego')
+GO
+INSERT [dbo].[provincia] ([id], [provincia]) VALUES (24, N'Tucumán')
+GO
+INSERT [dbo].[tipo_documento] ([id], [descripcion]) VALUES (1, N'DNI')
+GO
+INSERT [dbo].[tipo_documento] ([id], [descripcion]) VALUES (2, N'CUIT')
+GO
+INSERT [dbo].[tipo_documento] ([id], [descripcion]) VALUES (3, N'CUIL')
+GO
+INSERT [dbo].[tipo_documento] ([id], [descripcion]) VALUES (4, N'Pasaporte')
+GO
+INSERT [dbo].[tipo_documento] ([id], [descripcion]) VALUES (5, N'Cédula de Identidad')
+GO
+INSERT [dbo].[tipo_documento] ([id], [descripcion]) VALUES (6, N'Libreta Cívica')
+GO
+INSERT [dbo].[tipo_documento] ([id], [descripcion]) VALUES (7, N'Libreta de Enrolamiento')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (1, N'Factura A')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (2, N'Factura B')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (3, N'Factura C')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (4, N'Presupesto')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (5, N'Nota de Credito')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (6, N'Nota de Crédito C')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (7, N'Nota de Débito A')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (8, N'Nota de Débito B')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (9, N'Nota de Débito C')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (10, N'Recibo X')
+GO
+INSERT [dbo].[tipo_factura] ([id], [descripcion]) VALUES (11, N'Factura M')
+GO
+SET IDENTITY_INSERT [dbo].[usuarios] ON 
+GO
+INSERT [dbo].[usuarios] ([id], [usuario], [pass], [nombre], [apellido], [dni], [idDepartamento]) VALUES (1, N'facundo', N'paron', N'Facundo', N'Paron', 41637946, 1)
+GO
+INSERT [dbo].[usuarios] ([id], [usuario], [pass], [nombre], [apellido], [dni], [idDepartamento]) VALUES (2, N'demo', N'demo', N'demo', N'demo', 41637946, 1)
+GO
+SET IDENTITY_INSERT [dbo].[usuarios] OFF
+GO
+ALTER TABLE [dbo].[motivoBajaStock] ADD  CONSTRAINT [DEFAULT_motivoBajaStock_operador]  DEFAULT ((1)) FOR [operador]
+GO
+/****** Object:  StoredProcedure [dbo].[GetCompra]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetCompra]
+ 
+AS
+BEGIN
+ 
+SELECT
+    compra.id,
+    proveedor.razon_social as Razon_Social,
+    compra.[fecha] as Fecha,
+    compra.[factura] as Factura_N,
+    compra.[id_proveedor] as ID_Proveedor,
+    compra.[location] as Directorio
+FROM [SurFeFinal].[dbo].[compra]
+INNER JOIN [SurFeFinal].[dbo].[proveedor]
+    ON compra.[id_proveedor] = proveedor.[id]
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[GetProducto]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[GetProducto]
+	@filtro VARCHAR(50) = NULL
+AS
+BEGIN
+	SELECT 
+      p.barcode,
+	  p.detalle,
+      p.stock
+      ,p.precio
+      
+ 
+ FROM producto p
+  WHERE 
+    CONVERT(NVARCHAR, detalle) LIKE '%' + @filtro + '%';
+END
+GO
+/****** Object:  StoredProcedure [dbo].[GetProductos]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetProductos]
+  -- Parámetros
+  @filtro VARCHAR(50) = NULL,
+  @categoriaID INT = NULL
+AS
+BEGIN
+  -- Cuerpo del procedimiento
+  SET NOCOUNT ON;
+
+  SELECT p.id,
+         p.barcode AS Barcode,
+         p.detalle AS Detalle,
+         
+         p.precio AS Precio,
+         c.categoria AS Categoria,
+         p.fecha_alta as FechaAlta,
+         p.categoria AS ID_Categoria
+  FROM dbo.producto AS p
+  JOIN dbo.categoria_productos AS c ON p.categoria = c.id
+
+  WHERE (@filtro IS NULL OR (p.barcode LIKE '%' + @filtro + '%' OR p.detalle LIKE '%' + @filtro + '%'))
+        AND (@categoriaID IS NULL OR p.categoria = @categoriaID);
+END
+GO
+/****** Object:  StoredProcedure [dbo].[GetProveedor]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetProveedor]
+  @filtro NVARCHAR(255)
+AS
+BEGIN
+  SELECT
+
+    [razon_social],
+    [cuit],
+    [direccion],
+    
+    [tel],
+    [correo],
+    [idLocalidad],
+    [id]
+  FROM [SurFeFinal].[dbo].[proveedor]
+  WHERE [razon_social] LIKE '%' + @filtro + '%'
+ORDER BY [razon_social];
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[GetProveedorPagos]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetProveedorPagos]
+ 
+AS
+BEGIN
+ 
+SELECT
+    proveedor.razon_social as Razon_Social,
+    proveedorpago.[fecha] as Fecha,
+    proveedorpago.[numero_factura] as NumeroFactura,
+    proveedorpago.[monto] as Monto,
+    proveedorpago.[id_proveedor] as ID_Proveedor
+FROM [SurFeFinal].[dbo].[proveedorpago]
+INNER JOIN [SurFeFinal].[dbo].[proveedor]
+    ON proveedorpago.[id_proveedor] = proveedor.[id]
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[GetSurfe]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[GetSurfe]
+--parametros
+@filtro varchar(50) = null
+AS
+BEGIN
+--cuerpo del procedimiento
+SET NOCOUNT ON;
+select c.id_cliente, c.razon_social, c.tipo_factura, c.cuit, c.domicilio, c.localidad, c.provincia, c.cp
+, c.telefono, iva.descripcion CondicionIVA, c.anulado
+from cliente c, condicionIVA iva
+where c.idCondicionIVA =iva.idCondicionIVA and  ( Convert(nvarchar,c.id_cliente) like '%'+@filtro+'%'  or
+(upper(razon_social ) like '%'+ upper(@filtro ) + '%' and anulado = 0))
+END
+GO
+/****** Object:  StoredProcedure [dbo].[GetSurFeFinal]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Otros procedimientos, declaraciones, etc.
+
+-- Nuevo procedimiento almacenado
+CREATE PROCEDURE [dbo].[GetSurFeFinal]
+    -- Parámetros
+    @filtro VARCHAR(50) = NULL
+AS
+BEGIN
+    -- Cuerpo del procedimiento
+    SET NOCOUNT ON;
+
+    SELECT 
+    c.id_cliente, 
+    c.razon_social, 
+    c.tipo_factura, 
+    c.cuit, 
+    c.domicilio, 
+    c.localidad, 
+    c.provincia, 
+    c.cp,
+    c.telefono, 
+    iva.descripcion AS CondicionIVA,
+    c.idCondicionIVA,
+    c.anulado,
+    loc.localidad AS localidad_loc,
+    prov.provincia AS provincia_prov,
+    tf.descripcion AS tipofactura,
+	td.descripcion as documento,
+	c.tipo_documento,
+	c.dni,
+	c.email,
+	c.barrio
+
+FROM 
+    cliente c
+INNER JOIN 
+    condicionIVA iva ON c.idCondicionIVA = iva.idCondicionIVA
+LEFT JOIN 
+    localidad loc ON c.localidad = loc.id
+LEFT JOIN 
+    provincia prov ON c.provincia = prov.id
+LEFT JOIN 
+    tipo_factura tf ON c.tipo_factura = tf.id
+	LEFT JOIN 
+	tipo_documento td on c.tipo_documento = td.id
+WHERE 
+    (CONVERT(NVARCHAR, c.id_cliente) LIKE '%' + @filtro + '%' AND c.anulado = 0) OR
+    (UPPER(razon_social) LIKE '%' + UPPER(@filtro) + '%' AND c.anulado = 0);
+END
+GO
+/****** Object:  StoredProcedure [dbo].[GetSurfeNuevo]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Otros procedimientos, declaraciones, etc.
+
+-- Nuevo procedimiento almacenado
+CREATE PROCEDURE [dbo].[GetSurfeNuevo]
+    -- Parámetros
+    @filtro VARCHAR(50) = NULL
+AS
+BEGIN
+    -- Cuerpo del procedimiento
+    SET NOCOUNT ON;
+
+    SELECT 
+        c.id_cliente, 
+        c.razon_social, 
+        c.tipo_factura, 
+        c.cuit, 
+        c.domicilio, 
+        c.localidad, 
+        c.provincia, 
+        c.cp,
+        c.telefono, 
+        iva.descripcion AS CondicionIVA,
+		c.idCondicionIVA,
+		c.anulado
+    FROM 
+        cliente c
+    INNER JOIN 
+        condicionIVA iva ON c.idCondicionIVA = iva.idCondicionIVA
+    WHERE 
+        (CONVERT(NVARCHAR, c.id_cliente) LIKE '%' + @filtro + '%' AND c.anulado = 0) OR
+        (UPPER(razon_social) LIKE '%' + UPPER(@filtro) + '%' AND c.anulado = 0);
+END
+GO
+/****** Object:  StoredProcedure [dbo].[InsertarDetalleFactura]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[InsertarDetalleFactura]
+    @id_factura INT,
+    @id_producto INT,
+    @cantidad INT
+AS
+BEGIN
+    -- Insertar datos en la tabla de detalle_factura
+    INSERT INTO detalle_factura (id_factura, id_producto, cantidad)
+    VALUES (@id_factura, @id_producto, @cantidad);
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[InsertFactura]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[InsertFactura]
+    @id_cliente varchar(50),
+    @tipo_documento varchar(50),
+    @fecha varchar(50),
+    @total DECIMAL(18, 2)
+AS
+BEGIN
+    
+
+   
+
+    -- Insertar factura
+    INSERT INTO factura ([id_cliente], [tipo_documento], [fecha],[total])
+    VALUES (@id_cliente, @tipo_documento, @fecha, @total);
+
+    -- Obtener el ID generado de la factura
+    select  SCOPE_IDENTITY()
+
+    
+END
+GO
+/****** Object:  StoredProcedure [dbo].[InsertSurfe]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[InsertSurfe]
+    @razon_social varchar(50),
+    @idCondicionIVA int,
+    @tipo_factura varchar(50),
+    @cuit varchar(50),
+    @domicilio varchar(50),
+    @localidad int,
+    @provincia varchar(50),
+    @cp varchar(50),
+    @telefono varchar(50),
+    @anulado bit,
+    @tipo_documento int,
+    @dni varchar(50),
+    @barrio varchar(50),
+    @email varchar(50),
+    @fechaRegistro datetime = NULL  -- parámetro opcional
+AS
+BEGIN
+    -- Si no se pasa fechaRegistro, se asigna una fecha aleatoria pasada
+    IF @fechaRegistro IS NULL
+        SET @fechaRegistro = DATEADD(DAY, -ABS(CHECKSUM(NEWID()) % 365), GETDATE())
+
+    INSERT INTO [dbo].[cliente]
+           ([razon_social],
+            [idCondicionIVA],
+            [tipo_factura],
+            [cuit],
+            [domicilio],
+            [localidad],
+            [provincia],
+            [cp],
+            [telefono],
+            [anulado],
+            [tipo_documento],
+            [dni],
+            [barrio],
+            [email],
+            [fechaRegistro])
+     VALUES
+           (@razon_social,
+            @idCondicionIVA,
+            @tipo_factura,
+            @cuit,
+            @domicilio,
+            @localidad,
+            @provincia,
+            @cp,
+            @telefono,
+            @anulado,
+            @tipo_documento,
+            @dni,
+            @barrio,
+            @email,
+            @fechaRegistro)
+
+    SELECT SCOPE_IDENTITY()
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SelectProducto]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SelectProducto]
+    @filtro NVARCHAR(255)  -- Puedes ajustar la longitud del filtro según tus necesidades
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Tu consulta SELECT con el filtro
+    SELECT *
+    FROM producto -- Reemplaza "TuTabla" con el nombre de tu tabla
+    WHERE CONVERT(NVARCHAR(MAX), barcode) = @filtro;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[UpdateSurfe]    Script Date: 31/10/2025 20:17:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[UpdateSurfe]
+ @razon_social varchar(50),
+ @idCondicionIVA int,
+ @tipo_factura varchar(50),
+@cuit varchar(50),
+@domicilio varchar(50),
+@localidad int,
+@provincia varchar(50),
+@cp varchar(50),
+@telefono varchar(50),
+@anulado bit,
+@tipo_documento int,
+@dni varchar(50),
+@barrio varchar(50),
+@email varchar(50)
+
+AS
+BEGIN
+update cliente set
+	razon_social = @razon_social,
+	idCondicionIVA = @idCondicionIVA,
+	tipo_factura = @tipo_factura,
+	domicilio = @domicilio,
+	localidad = @localidad,
+	provincia = @provincia,
+	cp = @cp,
+	telefono = @telefono,
+	anulado = @anulado,
+	tipo_documento = @tipo_documento,
+	dni = @dni,
+	barrio = @barrio,
+	email = email
+where cuit = @cuit
+end
+GO
