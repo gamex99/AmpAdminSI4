@@ -564,3 +564,4 @@ C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\obj\Debug\net6.
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\obj\Debug\net6.0-windows\ref\SurFeFront.dll
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\obj\Debug\net6.0-windows\SurFe.NotaDeCredito.resources
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\obj\Debug\net6.0-windows\SurFeFront.ConsultarVenta.resources
+C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\obj\Debug\net6.0-windows\SurFeFront.sourcelink.json

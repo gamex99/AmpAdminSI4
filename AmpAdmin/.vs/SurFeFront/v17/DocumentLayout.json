@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\surfefront\\puntodeventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|solutionrelative:surfefront\\puntodeventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|c:\\users\\parrax\\documents\\github\\ampadminsi4\\ampadmin\\surfefront\\puntodeventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|solutionrelative:surfefront\\puntodeventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|c:\\users\\parrax\\documents\\github\\ampadminsi4\\ampadmin\\surfefront\\md.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|solutionrelative:surfefront\\md.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\surfefront\\md.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|solutionrelative:surfefront\\md.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|c:\\users\\parrax\\documents\\github\\ampadminsi4\\ampadmin\\surfefront\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{8F65AD91-42FC-459B-AA37-33639217BD0E}|SurFeFront\\SurFeFront.csproj|solutionrelative:surfefront\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,52 +22,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PuntoDeVenta.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\PuntoDeVenta.cs",
-              "RelativeDocumentMoniker": "SurFeFront\\PuntoDeVenta.cs",
-              "ToolTip": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\PuntoDeVenta.cs [Dise\u00F1o]",
-              "RelativeToolTip": "SurFeFront\\PuntoDeVenta.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T02:52:40.202Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PuntoDeVenta.cs",
-              "DocumentMoniker": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\PuntoDeVenta.cs",
-              "RelativeDocumentMoniker": "SurFeFront\\PuntoDeVenta.cs",
-              "ToolTip": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\PuntoDeVenta.cs",
-              "RelativeToolTip": "SurFeFront\\PuntoDeVenta.cs",
-              "ViewState": "AQIAAFYCAAAAAAAAAAAIwG0CAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T02:18:04.973Z",
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\App.config",
+              "RelativeDocumentMoniker": "SurFeFront\\App.config",
+              "ToolTip": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\App.config",
+              "RelativeToolTip": "SurFeFront\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-10-31T23:45:12.39Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "md.cs",
-              "DocumentMoniker": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\md.cs",
-              "RelativeDocumentMoniker": "SurFeFront\\md.cs",
-              "ToolTip": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\md.cs",
-              "RelativeToolTip": "SurFeFront\\md.cs",
-              "ViewState": "AQIAAGUCAAAAAAAAAAAIwAECAABVAQAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T02:17:02.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "md.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\md.cs",
-              "RelativeDocumentMoniker": "SurFeFront\\md.cs",
-              "ToolTip": "C:\\Users\\ParraX\\Documents\\GitHub\\AmpAdminSI4\\AmpAdmin\\SurFeFront\\md.cs [Dise\u00F1o]*",
-              "RelativeToolTip": "SurFeFront\\md.cs [Dise\u00F1o]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T02:16:44.319Z"
             }
           ]
         }
