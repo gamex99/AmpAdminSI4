@@ -115,6 +115,7 @@ C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeDatos\obj\Debug\net6.
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeDatos\obj\Debug\net6.0\SurFeDatos.AssemblyInfoInputs.cache
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeDatos\obj\Debug\net6.0\SurFeDatos.AssemblyInfo.cs
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeDatos\obj\Debug\net6.0\SurFeDatos.csproj.CoreCompileInputs.cache
+C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeDatos\obj\Debug\net6.0\SurFeDatos.sourcelink.json
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeDatos\obj\Debug\net6.0\SurFeDatos.csproj.Up2Date
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeDatos\obj\Debug\net6.0\SurFeDatos.dll
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeDatos\obj\Debug\net6.0\refint\SurFeDatos.dll

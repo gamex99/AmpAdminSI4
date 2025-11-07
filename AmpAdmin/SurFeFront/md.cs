@@ -524,18 +524,18 @@ namespace SurFeFront
 
 
             //verificamos si esta la carpeta en temp total no tenemos que guardar este informe
-                if (!Directory.Exists(ClaseCompartida.carpetaTemp))
-                {
-                    // La carpeta no existe, crearla
-                    Directory.CreateDirectory(ClaseCompartida.carpetaTemp);
+            if (!Directory.Exists(ClaseCompartida.carpetaTemp))
+            {
+                // La carpeta no existe, crearla
+                Directory.CreateDirectory(ClaseCompartida.carpetaTemp);
 
-                }
-          
+            }
+
             // hasta aca verificamos si esta la carpeta en temp total no tenemos que guardar este informe
             string directorioPrograma = AppDomain.CurrentDomain.BaseDirectory;
-                string nombreArchivo = "VentasRealizadas.pdf";
-                string rutaCompletaArchivo = Path.Combine(directorioPrograma, nombreArchivo);
-                string rutaArchivoPDF = nombreArchivo;
+            string nombreArchivo = "VentasRealizadas.pdf";
+            string rutaCompletaArchivo = Path.Combine(directorioPrograma, nombreArchivo);
+            string rutaArchivoPDF = nombreArchivo;
             if (File.Exists(rutaCompletaArchivo))
             {
                 File.Delete(rutaCompletaArchivo);
@@ -669,8 +669,8 @@ namespace SurFeFront
 
 
             string filas = string.Empty;
-                decimal total = 0;
-                while (lector.Read())
+            decimal total = 0;
+            while (lector.Read())
             {
                 string htmlRow = "<tr>";
 
@@ -750,5 +750,33 @@ namespace SurFeFront
             // Display the new form.  
             newMDIChild.Show();
         }
+
+        private void productosMasVendidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestChartTop10productos newMDIChild = new TestChartTop10productos();
+
+
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+        }
+
+        private void altaClientesMensualesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BarStockBajo child = new BarStockBajo();
+            {
+                child.MdiParent = this;
+                child.Show();
+            }
+        }
+
+        private void ventasMensualesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClienteMasVendido child = new ClienteMasVendido();
+            {
+                child.MdiParent = this;
+                child.Show();
+            }
+            }
     }
 }
