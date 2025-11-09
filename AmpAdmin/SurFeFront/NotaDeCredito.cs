@@ -93,7 +93,9 @@ namespace SurFe
 
                 }
             }
-            IVA = SumaSubtotal * (decimal).21;
+            //
+            //IVA = SumaSubtotal * (decimal).21;
+            IVA = Math.Round(SumaSubtotal * (decimal)0.21, 2);
             total = SumaSubtotal + IVA;
             // Mostrar la suma en algún lugar, como un TextBox
             subtotal.Text = SumaSubtotal.ToString();
@@ -185,60 +187,68 @@ namespace SurFe
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtcodigo.Text) && !string.IsNullOrEmpty(txtcantidad.Text))
+            if (int.TryParse(txtcodigo.Text, out int codigo) && int.TryParse(txtcantidad.Text, out int cantidadd))
             {
-                string filtro = txtcodigo.Text;
-                string conString = System.Configuration.ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString;
-                string barcode = "";
-                string detalle = "";
-                decimal precio = (decimal)00;
-                int stock = 0;
-                int cantidad = int.Parse(txtcantidad.Text);
-
-
-                using (SqlConnection connection = new SqlConnection(conString))
+                if (int.TryParse(txtcantidad.Text, out int valor) && valor > 0)
                 {
-                    using (SqlCommand command = new SqlCommand("SelectProducto", connection))
+
+                    string filtro = txtcodigo.Text;
+                    string conString = System.Configuration.ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString;
+                    string barcode = "";
+                    string detalle = "";
+                    decimal precio = (decimal)00;
+                    int stock = 0;
+                    int cantidad = int.Parse(txtcantidad.Text);
+
+
+                    using (SqlConnection connection = new SqlConnection(conString))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        // Ajusta el nombre del parámetro y su valor según tus necesidades
-                        command.Parameters.AddWithValue("@filtro", filtro);
-
-                        try
+                        using (SqlCommand command = new SqlCommand("SelectProducto", connection))
                         {
-                            connection.Open();
+                            command.CommandType = CommandType.StoredProcedure;
 
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            // Ajusta el nombre del parámetro y su valor según tus necesidades
+                            command.Parameters.AddWithValue("@filtro", filtro);
+
+                            try
                             {
-                                while (reader.Read())
+                                connection.Open();
+
+                                using (SqlDataReader reader = command.ExecuteReader())
                                 {
-                                    // Asigna los valores a las variables
-                                    barcode = reader["barcode"].ToString();
-                                    detalle = reader["detalle"].ToString();
-                                    precio = Convert.ToDecimal(reader["precio"]);
-                                    stock = Convert.ToInt32(reader["stock"]);
+                                    while (reader.Read())
+                                    {
+                                        // Asigna los valores a las variables
+                                        barcode = reader["barcode"].ToString();
+                                        detalle = reader["detalle"].ToString();
+                                        precio = Convert.ToDecimal(reader["precio"]);
+                                        stock = Convert.ToInt32(reader["stock"]);
 
 
+                                    }
                                 }
-                            }
 
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Error: " + ex.Message);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error: " + ex.Message);
+                            }
                         }
                     }
-                }
-                if (stock > 0)
-                {
-                    decimal totalart = precio * cantidad;
-                    dataGridView1.Rows.Add(barcode, cantidad, detalle, precio, totalart, stock);
-                    RecalcularSuma();
+                    if (stock > 0)
+                    {
+                        decimal totalart = precio * cantidad;
+                        dataGridView1.Rows.Add(barcode, cantidad, detalle, precio, totalart, stock);
+                        RecalcularSuma();
+                    }
+                    else
+                    {
+                        MessageBox.Show("NO HAY EN STOCK: " + detalle, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("NO HAY EN STOCK: " + detalle, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("La cantidad debe ser mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else

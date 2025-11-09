@@ -54,6 +54,8 @@
             btnagregar = new Button();
             btnpresu = new Button();
             btnmod = new Button();
+            labelArt = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -225,7 +227,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(266, 481);
+            label8.Location = new Point(377, 481);
             label8.Name = "label8";
             label8.Size = new Size(68, 15);
             label8.TabIndex = 15;
@@ -235,7 +237,7 @@
             // subtotal
             // 
             subtotal.AutoSize = true;
-            subtotal.Location = new Point(340, 481);
+            subtotal.Location = new Point(476, 481);
             subtotal.Name = "subtotal";
             subtotal.Size = new Size(28, 15);
             subtotal.TabIndex = 16;
@@ -246,7 +248,7 @@
             label10.AutoSize = true;
             label10.BackColor = Color.Transparent;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(476, 481);
+            label10.Location = new Point(546, 481);
             label10.Name = "label10";
             label10.Size = new Size(39, 15);
             label10.TabIndex = 17;
@@ -257,7 +259,7 @@
             label11.AutoSize = true;
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(661, 481);
+            label11.Location = new Point(730, 481);
             label11.Name = "label11";
             label11.Size = new Size(47, 15);
             label11.TabIndex = 18;
@@ -267,7 +269,7 @@
             // labeltotal
             // 
             labeltotal.AutoSize = true;
-            labeltotal.Location = new Point(714, 481);
+            labeltotal.Location = new Point(811, 481);
             labeltotal.Name = "labeltotal";
             labeltotal.Size = new Size(28, 15);
             labeltotal.TabIndex = 19;
@@ -276,7 +278,7 @@
             // labeliva
             // 
             labeliva.AutoSize = true;
-            labeliva.Location = new Point(523, 481);
+            labeliva.Location = new Point(627, 481);
             labeliva.Name = "labeliva";
             labeliva.Size = new Size(28, 15);
             labeliva.TabIndex = 20;
@@ -323,12 +325,34 @@
             btnmod.UseVisualStyleBackColor = true;
             btnmod.Click += btnmod_Click;
             // 
+            // labelArt
+            // 
+            labelArt.AutoSize = true;
+            labelArt.Location = new Point(284, 481);
+            labelArt.Name = "labelArt";
+            labelArt.Size = new Size(13, 15);
+            labelArt.TabIndex = 25;
+            labelArt.Text = "0";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(177, 481);
+            label3.Name = "label3";
+            label3.Size = new Size(86, 15);
+            label3.TabIndex = 26;
+            label3.Text = "Total Articulos";
+            // 
             // PuntoDeVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(881, 561);
+            Controls.Add(label3);
+            Controls.Add(labelArt);
             Controls.Add(btnmod);
             Controls.Add(btnpresu);
             Controls.Add(btnbuscarart);
@@ -391,5 +415,7 @@
         private Button btnbuscarart;
         private Button btnpresu;
         private Button btnmod;
+        private Label labelArt;
+        private Label label3;
     }
 }

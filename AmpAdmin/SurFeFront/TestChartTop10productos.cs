@@ -141,6 +141,7 @@ namespace SurFeFront
                     // ¡Refrescar el gráfico!
                     FormsPlot1.Refresh();
                 }
+        /*
         private void CargarGrafico2()
 
         {
@@ -234,6 +235,104 @@ namespace SurFeFront
                 text.Alignment = Alignment.MiddleLeft;
             }
 
+
+            // ¡Refrescar el gráfico!
+            FormsPlot1.Refresh();
+        }*/
+        private void CargarGrafico2()
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString;
+            // --- 1 y 2. OBTENER DATOS DE SQL ---
+            // (Esta parte esta idéntica y funciona bien)
+            List<double> values = new List<double>();
+            List<string> labels = new List<string>();
+
+            string query = @"
+SELECT TOP 10 [detalle], [cantidad_venta] 
+FROM [dbo].[producto] 
+WHERE [cantidad_venta] > 0 
+ORDER BY [cantidad_venta] DESC";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        labels.Add(reader.GetString(0));
+                        values.Add(Convert.ToDouble(reader.GetValue(1)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar datos de la base de datos: " + ex.Message);
+                return;
+            }
+
+            // --- 3. Configurar el gráfico (Versión Horizontal) ---
+            FormsPlot1.Plot.Clear();
+            double[] dataValues = values.ToArray();
+            string[] dataLabels = labels.ToArray();
+
+            // 1. Añadir las barras HORIZONTALES
+            var barPlot = FormsPlot1.Plot.Add.Bars(dataValues);
+            barPlot.Horizontal = true;
+            barPlot.Color = Colors.Navy;
+
+            // 2. Asignar etiquetas de eje (AHORA EN EL EJE IZQUIERDO)
+            Tick[] ticks = new Tick[dataLabels.Length];
+            for (int i = 0; i < dataLabels.Length; i++)
+            {
+                ticks[i] = new Tick(i, dataLabels[i]);
+            }
+            // Asignamos los nombres al eje Izquierdo (Y)
+            FormsPlot1.Plot.Axes.Left.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks);
+
+            // 3. Títulos y Etiquetas (EJES INVERTIDOS)
+            FormsPlot1.Plot.Title("Top 10 Productos Más Vendidos");
+            FormsPlot1.Plot.XLabel("Cantidad Vendida"); // Eje X es ahora la cantidad
+            FormsPlot1.Plot.YLabel("Producto");       // Eje Y es ahora el producto
+
+            // 4. Límites de Ejes (EJES INVERTIDOS)
+            double maxX = dataValues.Length > 0 ? dataValues.Max() : 10;
+            // Modificado: Damos un 20% de espacio extra para las etiquetas de valor
+            FormsPlot1.Plot.Axes.SetLimitsX(0, maxX * 1.20);
+            FormsPlot1.Plot.Axes.SetLimitsY(-0.5, dataValues.Length - 0.5);
+
+
+            // --- 6. AÑADIR ETIQUETAS DE VALOR (LA CANTIDAD) ---
+            // (Modificado para mostrar la cantidad al final de la barra)
+            for (int i = 0; i < dataValues.Length; i++)
+            {
+                // CAMBIO: La etiqueta es el VALOR, no el nombre
+                // "N0" es para un número entero (ej: "150")
+                string label = dataValues[i].ToString("N0");
+
+                // CAMBIO: La posición Y es el centro de la barra ('i')
+                double yPos = i;
+
+                // CAMBIO: La posición X es el FINAL de la barra
+                double xPos = dataValues[i];
+
+                var text = FormsPlot1.Plot.Add.Text(label, xPos, yPos);
+
+                // --- Estilo del texto ---
+                // CAMBIO: Color a negro para ser visible fuera de la barra
+                text.Color = Colors.Black;
+                text.Bold = false;
+                text.Size = 10;
+
+                // CAMBIO: Alineación (Mantenemos 'MiddleLeft')
+                // Esto hace que el texto EMPIECE en xPos
+                text.Alignment = Alignment.MiddleLeft;
+
+                // AÑADIDO: Un pequeño padding para que no esté pegado
+                text.OffsetX = 5;
+            }
 
             // ¡Refrescar el gráfico!
             FormsPlot1.Refresh();
