@@ -123,3 +123,4 @@ C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\bin\Debug\net6.
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\bin\Debug\net6.0-windows7.0\ScottPlot.WinForms.dll
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\obj\Debug\net6.0-windows7.0\SurFeFront.BarStockBajo.resources
 C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\obj\Debug\net6.0-windows7.0\SurFeFront.ClienteMasVendido.resources
+C:\Users\ParraX\Documents\GitHub\AmpAdminSI4\AmpAdmin\SurFeFront\obj\Debug\net6.0-windows7.0\SurFeFront.GraficoVentasProductosPorCategorias.resources

@@ -42,6 +42,7 @@
             ventasMensualesToolStripMenuItem = new ToolStripMenuItem();
             productosMasVendidosToolStripMenuItem = new ToolStripMenuItem();
             altaClientesMensualesToolStripMenuItem = new ToolStripMenuItem();
+            facturasFacturadasToolStripMenuItem = new ToolStripMenuItem();
             statusStrip = new StatusStrip();
             toolStripStatusLabel = new ToolStripStatusLabel();
             toolTip = new ToolTip(components);
@@ -112,7 +113,7 @@
             // 
             // graficosEstadisticosToolStripMenuItem
             // 
-            graficosEstadisticosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ventasMensualesToolStripMenuItem, productosMasVendidosToolStripMenuItem, altaClientesMensualesToolStripMenuItem });
+            graficosEstadisticosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ventasMensualesToolStripMenuItem, productosMasVendidosToolStripMenuItem, altaClientesMensualesToolStripMenuItem, facturasFacturadasToolStripMenuItem });
             graficosEstadisticosToolStripMenuItem.Name = "graficosEstadisticosToolStripMenuItem";
             graficosEstadisticosToolStripMenuItem.Size = new Size(181, 22);
             graficosEstadisticosToolStripMenuItem.Text = "Graficos Estadisticos";
@@ -137,6 +138,13 @@
             altaClientesMensualesToolStripMenuItem.Size = new Size(219, 22);
             altaClientesMensualesToolStripMenuItem.Text = "Productos con Stock bajo";
             altaClientesMensualesToolStripMenuItem.Click += altaClientesMensualesToolStripMenuItem_Click;
+            // 
+            // facturasFacturadasToolStripMenuItem
+            // 
+            facturasFacturadasToolStripMenuItem.Name = "facturasFacturadasToolStripMenuItem";
+            facturasFacturadasToolStripMenuItem.Size = new Size(219, 22);
+            facturasFacturadasToolStripMenuItem.Text = "Formas de pago ventas";
+            facturasFacturadasToolStripMenuItem.Click += facturasFacturadasToolStripMenuItem_Click;
             // 
             // statusStrip
             // 
@@ -197,6 +205,7 @@
         private ToolStripMenuItem ventasMensualesToolStripMenuItem;
         private ToolStripMenuItem productosMasVendidosToolStripMenuItem;
         private ToolStripMenuItem altaClientesMensualesToolStripMenuItem;
+        private ToolStripMenuItem facturasFacturadasToolStripMenuItem;
     }
 }
 

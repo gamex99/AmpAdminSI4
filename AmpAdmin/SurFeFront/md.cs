@@ -1,6 +1,7 @@
-﻿using iTextSharp.text.pdf;
-using iTextSharp.text;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
+using Org.BouncyCastle.Asn1.Ocsp;
 using SurFe;
 using System;
 using System.Collections.Generic;
@@ -777,6 +778,16 @@ namespace SurFeFront
                 child.MdiParent = this;
                 child.Show();
             }
+        }
+
+        private void facturasFacturadasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            GraficoVentasProductosPorCategorias child = new GraficoVentasProductosPorCategorias();
+            {
+                child.MdiParent = this;
+                child.Show();
             }
+        }
     }
 }

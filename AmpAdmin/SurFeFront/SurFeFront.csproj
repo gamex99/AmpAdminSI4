@@ -63,6 +63,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>.resx</DependentUpon>
     </Compile>
+    <Compile Update="GraficoVentasProductosPorCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ComprasRegistrar.cs">
       <SubType>Form</SubType>
     </Compile>
